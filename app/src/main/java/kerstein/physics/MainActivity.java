@@ -1,4 +1,4 @@
-package physics.kerstein;
+package kerstein.physics;
 
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import physics.kerstein.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(imageView);
+
         angle= (TextView) findViewById(R.id.angle);
         velocity= (TextView) findViewById(R.id.velocity);
         time= (TextView) findViewById(R.id.time);
@@ -33,31 +39,25 @@ public class MainActivity extends AppCompatActivity {
         fieldA= (EditText) findViewById(R.id.angleEdit);
         fieldV= (EditText) findViewById(R.id.velocityEdit);
         fieldT= (EditText) findViewById(R.id.timeEdit);
-        button= (Button) findViewById(R.id.button);
+        button = (Button) findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                Double aString = Double.parseDouble(fieldA.getText().toString());
-                Double vString = Double.parseDouble(fieldV.getText().toString());
-                Double tString = Double.parseDouble(fieldT.getText().toString());
-                Double radians = Math.toRadians(aString);
-                double answerX = getX(radians, vString, tString);
-                double answerY = getY(radians, vString, tString);
-                StringBuilder builder= new StringBuilder();
+            public void onClick(View v) {
+                Projectile p = new Projectile(Double.parseDouble(fieldA.getText().toString()), Double.parseDouble(fieldV.getText().toString()), Double.parseDouble(fieldT.getText().toString()));
+                double answerX = p.getAnswerX();
+                double answerY = p.getAnswerY();
+                StringBuilder builder = new StringBuilder();
                 builder.append(answerX);
-                builder.append(",  " );
+                builder.append(",  ");
                 builder.append(answerY);
                 answer.setText(builder);
             }
         });
 
-    }
-        private double getX(Double radians, Double vString, Double tString){
-        return Math.sin(radians) * vString * tString;}
 
-        private double getY(Double radians, Double vString, Double tString){
-        return (Math.cos(radians) * vString * tString - (.5 * 9.8 * (tString*tString)));}
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

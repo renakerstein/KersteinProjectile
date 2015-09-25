@@ -1,4 +1,10 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,6 +15,11 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/projectilephoto"/>
+
     <TextView android:text="@string/angle" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/angle"/>
@@ -16,7 +27,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/angleEdit"/>
+        android:id="@+id/angleEdit"
+        android:inputType="numberDecimal"/>
 
     <TextView android:text="@string/velocity" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +37,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/velocityEdit"/>
+        android:id="@+id/velocityEdit"
+        android:inputType="numberDecimal"/>
 
     <TextView android:text="@string/time" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,7 +47,9 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/timeEdit"/>
+        android:id="@+id/timeEdit"
+        android:inputType="numberDecimal"/>
+
     <Button
         android:text="@string/calculate"
         android:layout_width="match_parent"
@@ -47,7 +62,6 @@
 
 
 
-
-
 </LinearLayout>
 
+    </ScrollView>
