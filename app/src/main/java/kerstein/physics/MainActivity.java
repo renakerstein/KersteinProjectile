@@ -8,11 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import physics.kerstein.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,13 +24,15 @@ public class MainActivity extends AppCompatActivity {
     private EditText fieldT;
     private Button button;
     private TextView answer;
+    private ImageView imageView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").into(imageView);
+        imageView = (ImageView) findViewById(R.id.image);
+        Picasso.with(this).load("http://physicsinbaseballl.weebly.com/uploads/1/5/2/3/15231458/3075613.jpg?525").into(imageView);
 
         angle= (TextView) findViewById(R.id.angle);
         velocity= (TextView) findViewById(R.id.velocity);
@@ -54,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 answer.setText(builder);
             }
         });
-
-
-
     }
 
     @Override
