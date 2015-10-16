@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imageView = (ImageView) findViewById(R.id.image);
-        Picasso.with(this).load("http://physicsinbaseballl.weebly.com/uploads/1/5/2/3/15231458/3075613.jpg?525").into(imageView);
+        Picasso.with(this).load("http://www.physicsclassroom.com/Class/vectors/u3l2c1.gif").into(imageView);
 
         angle= (TextView) findViewById(R.id.angle);
         velocity= (TextView) findViewById(R.id.velocity);
