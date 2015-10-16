@@ -1,5 +1,6 @@
 package kerstein.physics;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,19 +44,22 @@ public class MainActivity extends AppCompatActivity {
         fieldT= (EditText) findViewById(R.id.timeEdit);
         button = (Button) findViewById(R.id.button);
 
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Projectile p = new Projectile(Double.parseDouble(fieldA.getText().toString()), Double.parseDouble(fieldV.getText().toString()), Double.parseDouble(fieldT.getText().toString()));
-                double answerX = p.getAnswerX();
-                double answerY = p.getAnswerY();
-                StringBuilder builder = new StringBuilder();
-                builder.append(answerX);
-                builder.append(",  ");
-                builder.append(answerY);
-                answer.setText(builder);
+                ShowAnswer();
             }
         });
+    }
+
+    private void ShowAnswer() {
+        Intent intent = new Intent(this, AnswerActivity.class);
+        intent.putExtra("ANGLE",Double.parseDouble(fieldA.getText().toString()));
+        intent.putExtra("VELOCITY", Double.parseDouble(fieldV.getText().toString()));
+        intent.putExtra("TIME", Double.parseDouble(fieldT.getText().toString()));
+
+        startActivity(intent);
     }
 
     @Override
