@@ -1,6 +1,7 @@
 package kerstein.physics;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,28 +18,27 @@ import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView angle;
     private EditText fieldA;
-    private TextView velocity;
     private EditText fieldV;
-    private TextView time;
     private EditText fieldT;
     private Button button;
-    private TextView answer;
     private ImageView imageView;
+
+    private SharedPreferences preferences;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Creates preferences for us to save and retrieve data
+        preferences=this.getSharedPreferences("DEFAULT", MODE_PRIVATE);
+
+
         imageView = (ImageView) findViewById(R.id.image);
         Picasso.with(this).load("http://www.physicsclassroom.com/Class/vectors/u3l2c1.gif").into(imageView);
 
-        angle= (TextView) findViewById(R.id.angle);
-        velocity= (TextView) findViewById(R.id.velocity);
-        time= (TextView) findViewById(R.id.time);
-        answer= (TextView) findViewById(R.id.answer);
         fieldA= (EditText) findViewById(R.id.angleEdit);
         fieldV= (EditText) findViewById(R.id.velocityEdit);
         fieldT= (EditText) findViewById(R.id.timeEdit);
@@ -62,6 +62,27 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    //edits preferences
+        SharedPreferences.Editor editor=preferences.edit();
+        editor.putString("Angle", fieldA.getText().toString());
+        editor.putString("Velocity", fieldV.getText().toString());
+        editor.putString("Time", fieldT.getText().toString());
+
+        editor.apply();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        fieldA.setText(preferences.getString("Angle", ""));
+        fieldV.setText(preferences.getString("Velocity",""));
+        fieldT.setText(preferences.getString("Time", ""));
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

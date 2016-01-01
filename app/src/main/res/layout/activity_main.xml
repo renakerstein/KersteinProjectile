@@ -22,35 +22,29 @@
         android:id="@+id/image"
         />
 
-    <TextView android:text="@string/angle" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/angle"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/angleEdit"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:hint="ANGLE"/>
 
-    <TextView android:text="@string/velocity" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/velocity"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/velocityEdit"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:hint="VELOCITY"/>
 
-    <TextView android:text="@string/time" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/time"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/timeEdit"
-        android:inputType="numberDecimal"/>
+        android:inputType="numberDecimal"
+        android:hint="TIME"/>
 
     <Button
         android:text="@string/calculate"
@@ -58,9 +52,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/button"/>
 
-    <TextView android:text="" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/answer"/>
 
 
 
